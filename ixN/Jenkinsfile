@@ -9,10 +9,8 @@ pipeline {
 			}
 			steps {
 				sh 'ping -c 4 ${Chassis}'
-				echo 'working dir:'
-				sh 'pwd'
-				sh 'python -m robot --dryrun ./simple_traffic.txt'
-				sh 'python -m robot --variable chassis:${Chassis} ./simple_traffic.txt'
+				sh 'python -m robot --dryrun ./ixN/simple_traffic.txt'
+				sh 'python -m robot --variable chassis:${Chassis} ./ixN/simple_traffic.txt'
 
 			}
 		}
