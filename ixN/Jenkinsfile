@@ -1,0 +1,30 @@
+pipeline {
+	agent any
+	stages {
+		stage('Test') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'ping -c 4 ${Chassis}'
+				sh 'python -m robot --dryrun ./simple_traffic.txt'
+				sh 'python -m robot --variable chassis:${Chassis} ./simple_traffic.txt'
+
+			}
+		}
+	}
+	post {
+		always {
+			publishHTML (target: [
+			  allowMissing: false,
+			  alwaysLinkToLastBuild: false,
+			  keepAll: true,
+			  reportDir: '../IxNetwork_simple_traffic',
+			  reportFiles: 'report.html',
+			  reportName: "Simple Traffic Test Report"
+			])
+		}
+	}
+}

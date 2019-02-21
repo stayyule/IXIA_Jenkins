@@ -1,0 +1,32 @@
+pipeline {
+	agent any
+	stages {
+		stage('Test2') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'ping -c 4 ${Chassis}'
+				sh 'python -m robot --dryrun ./TestCase'
+				sh 'rm -rf ./bps_report'
+				sh 'mkdir bps_report'
+				sh 'python -m robot --variable chassis:${Chassis} --variable ratePercentage:${Percentage} --variable rate:${Rate} --variable sessionNumber:${SessionNumber} --variable sessionRate:${SessionRate} --variable enable2:${Appsim2} --variable portSet2:${PortSet2}  --include ${TestCase}AND${IP} --exclude ${Exclude} ./TestCase/2018.txt'
+
+			}
+		}
+	}
+	post {
+		always {
+			publishHTML (target: [
+			  allowMissing: false,
+			  alwaysLinkToLastBuild: false,
+			  keepAll: true,
+			  reportDir: '../IPS_2018_2@2',
+			  reportFiles: 'report.html',
+			  reportName: "${Vendor} Test Report"
+			])
+		}
+	}
+}

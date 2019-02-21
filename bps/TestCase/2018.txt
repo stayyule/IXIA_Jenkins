@@ -1,0 +1,218 @@
+*** Settings ***
+Library           ../Lib/BPS/restPy.BPS    ${chassis}    ${username}    ${password}
+
+*** Variables ***
+${chassis}        192.168.217.136
+${username}       admin
+${password}       admin
+@{portList}       0    1    2    3
+@{portList2}      4    5    6    7
+${group}          1
+${slot}           1
+${run_id}         -1
+${modelname}      2018 IPS
+${rate}           10000
+${sessionNumber}    10000000
+${sessionRate}    50000
+${enable2}        true
+${portSet2}       false
+
+*** Test Cases ***
+7-1_Public Strike
+    [Tags]    all    7-1    ipv4    7
+    Simple Run
+
+7-1_Public Strike v6
+    [Tags]    all    7-1    ipv6    7
+    Simple Run
+
+7-4_Strike
+    [Tags]    all    7-4    ipv4    7
+    Simple Run
+
+7-4_Strike v6
+    [Tags]    all    7-4    ipv6    7
+    Simple Run
+
+7-5_Strike
+    [Tags]    all    7-5    ipv4    7
+    Simple Run
+
+7-5_Strike v6
+    [Tags]    all    7-5    ipv6    7
+    Simple Run
+
+7-6_Strike
+    [Tags]    all    7-6    ipv4    7
+    Simple Run
+
+7-6_Strike v6
+    [Tags]    all    7-6    ipv6    7
+    Simple Run
+
+7-7_Case
+    [Tags]    all    7-7    ipv4    7
+    Simple Run
+
+7-7_Case v6
+    [Tags]    all    7-7    ipv6    7
+    Simple Run
+
+7-7_Encode
+    [Tags]    all    7-7    ipv4    7
+    Simple Run
+
+7-7_Encode v6
+    [Tags]    all    7-7    ipv6    7
+    Simple Run
+
+7-7_Fragment
+    [Tags]    all    7-7    ipv4    7
+    Simple Run
+
+7-7_Fragment v6
+    [Tags]    all    7-7    ipv6    7
+    Simple Run
+
+7-7_Port_Redirection
+    [Tags]    all    7-7    ipv4    7
+    Simple Run
+
+7-7_Port_Redirection v6
+    [Tags]    all    7-7    ipv6    7
+    Simple Run
+
+7-7_Space
+    [Tags]    all    7-7    ipv4    7
+    Simple Run
+
+7-7_Space v6
+    [Tags]    all    7-7    ipv6    7
+    Simple Run
+
+7-7_TCP_Reflow
+    [Tags]    all    7-7    ipv4    7
+    Simple Run
+
+7-7_TCP_Reflow v6
+    [Tags]    all    7-7    ipv6    7
+    Simple Run
+
+7-7_Variants
+    [Tags]    all    7-7    ipv4    7
+    Simple Run
+
+7-7_Variants v6
+    [Tags]    all    7-7    ipv6    7
+    Simple Run
+
+7-8-1
+    [Tags]    all    7-8    ipv4    7
+    Simple Run
+
+7-8-1 v6
+    [Tags]    all    7-8    ipv6    7
+    Simple Run
+
+7-8-2
+    [Tags]    all    7-8    ipv4    7
+    Simple Run
+
+7-8-2 v6
+    [Tags]    all    7-8    ipv6    7
+    Simple Run
+
+7-9_Malware
+    [Tags]    all    7-9    ipv4    7
+    Simple Run
+
+7-9_Malware v6
+    [Tags]    all    7-9    ipv6    7
+    Simple Run
+
+8-1_MisInformation
+    [Tags]    all    8-1    ipv4    8
+    Simple Run
+
+8-1_MisInformation v6
+    [Tags]    all    8-1    ipv6    8
+    Simple Run
+
+8-2
+    [Tags]    all    8-2    ipv4    8
+    Simple Run
+
+8-2 v6
+    [Tags]    all    8-2    ipv6    8
+    Simple Run
+
+7-2 Scrambler
+    [Tags]    all    7-2    ipv4    7
+    Simple Run
+
+7-2 Scrambler v6
+    [Tags]    all    7-2    ipv6    7
+    Simple Run
+
+*** Keywords ***
+Simple Run
+    [Tags]    robot:no-dry-run
+    Login
+    Ports State
+    ${group}=    Set Variable If    '${portSet2}'=='true'    2    1
+    Run Keyword If    '${portSet2}'=='true'    Reserve Ports    slot=${slot}    portList=@{portList2}    group=${group}    force=true
+    Run Keyword If    '${portSet2}'=='false'    Reserve Ports    slot=${slot}    portList=@{portList}    group=${group}    force=true
+    ${modelname}=    Catenate    ${modelname}    ${TEST NAME}
+    Log    Running test: ${modelname}
+    Log    Slot: ${slot}
+    Log    Port list: @{portList}
+    Set Rate
+    ${run_id}    Run Test    modelname=${modelname}    group=${group}
+    ${run_id}    Convert To String    ${run_id}
+    ${run_id_length}    Get Length    ${run_id}
+    Should Be True    ${run_id_length} > 2
+    ${progress}=    Set Variable    0
+    : FOR    ${index}    IN RANGE    1500
+    \    ${progress}    Get RTS    ${run_id}
+    \    Exit For Loop If    ${progress} ==100
+    \    Sleep    10s
+    Sleep    1s
+    Should Be True    ${progress}==100
+    Get Test Result    ${run_id}
+    Export Test Report    testId=${run_id}    reportName=${modelname}.pdf    location=./bps_report
+    [Teardown]    Cleanup Test
+
+Cleanup Test
+    [Tags]    robot:no-dry-run
+    Stop Test    testid=${run_id}
+    Run Keyword If    '${portSet2}'=='false'    Unreserve Ports    slot=${slot}    portList=@{portList}
+    Run Keyword If    '${portSet2}'=='true'    Unreserve Ports    slot=${slot}    portList=@{portList2}
+
+Set Rate
+    [Tags]    robot:no-dry-run
+    ${modelname}=    Catenate    ${modelname}    ${TEST NAME}
+    Set Normal Test    ${modelname}
+    ${rate}=    Evaluate    int(${rate} * ${ratePercentage})
+    ${sessionNumber}=    Evaluate    int(${sessionNumber} * ${ratePercentage})
+    ${sessionRate}=    Evaluate    int(${sessionRate} * ${ratePercentage})
+    Modify Normal Test2    componentId=appsim_1    elementId=rateDist    paramId=min    Value=${rate}
+    Modify Normal Test2    componentId=appsim_1_1    elementId=rateDist    paramId=min    Value=${rate}
+    Modify Normal Test2    componentId=APPSIM_TypeA_1_2    elementId=rateDist    paramId=min    Value=${rate}
+    Modify Normal Test2    componentId=appsim_2    elementId=rateDist    paramId=min    Value=${rate}
+    Modify Normal Test2    componentId=IPS_1    elementId=rateDist    paramId=min    Value=${rate}
+    Modify Normal Test2    componentId=appsim_1    elementId=sessions    paramId=max    Value=${sessionNumber}
+    Modify Normal Test2    componentId=appsim_1_1    elementId=sessions    paramId=max    Value=${sessionNumber}
+    Modify Normal Test2    componentId=APPSIM_TypeA_1_2    elementId=sessions    paramId=max    Value=${sessionNumber}
+    Modify Normal Test2    componentId=appsim_2    elementId=sessions    paramId=max    Value=${sessionNumber}
+    Modify Normal Test2    componentId=IPS_1    elementId=sessions    paramId=max    Value=${sessionNumber}
+    Modify Normal Test2    componentId=appsim_1    elementId=sessions    paramId=maxPerSecond    Value=${sessionRate}
+    Modify Normal Test2    componentId=appsim_1_1    elementId=sessions    paramId=maxPerSecond    Value=${sessionRate}
+    Modify Normal Test2    componentId=APPSIM_TypeA_1_2    elementId=sessions    paramId=maxPerSecond    Value=${sessionRate}
+    Modify Normal Test2    componentId=appsim_2    elementId=sessions    paramId=maxPerSecond    Value=${sessionRate}
+    Modify Normal Test2    componentId=IPS_1    elementId=sessions    paramId=maxPerSecond    Value=${sessionRate}
+    Modify Normal Test    componentId=appsim_2    elementId=active    Value=${enable2}
+    Modify Normal Test    componentId=IPS_1    elementId=active    Value=${enable2}
+    Modify Normal Test    componentId=appsim_1_1    elementId=active    Value=${enable2}
+    Modify Normal Test    componentId=APPSIM_TypeA_1_2    elementId=active    Value=${enable2}
+    Save Normal Test    ""    force=True
+    View Normal Test    enableRequestPrints=True

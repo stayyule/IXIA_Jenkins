@@ -1,0 +1,2187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180703 13:06:30.954" generator="Robot 3.0.4 (Python 2.7.15 on win32)">
+<suite source="D:\Git\BpsTestSh\TestCase" id="s1" name="TestCase">
+<suite source="D:\Git\BpsTestSh\TestCase\13.txt" id="s1-s1" name="13">
+<test id="s1-s1-t1" name="1_Actions">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_13</arg>
+<arg>1_Actions</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:06:31.658" level="INFO">${modelname} = 2018_IPS_13-1_Actions</msg>
+<status status="PASS" endtime="20180703 13:06:31.658" starttime="20180703 13:06:31.657"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:06:31.659" level="INFO">Upload bpt: 2018_IPS_13-1_Actions</msg>
+<status status="PASS" endtime="20180703 13:06:31.659" starttime="20180703 13:06:31.659"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:06:32.844" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:06:32.844" starttime="20180703 13:06:31.662"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:32.962" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_13-1_Actions]</msg>
+<status status="PASS" endtime="20180703 13:06:32.963" starttime="20180703 13:06:32.844"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:06:33.089" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:06:33.089" starttime="20180703 13:06:32.963"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:35.455" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:06:35.456" starttime="20180703 13:06:33.089"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:06:35.908" level="INFO">400
+Some error occurred while starting the test.
+fail: 2018-13-1.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:06:35.908" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:06:35.908" starttime="20180703 13:06:35.456"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:06:35.909" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:06:35.909" starttime="20180703 13:06:35.908"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:06:35.909" starttime="20180703 13:06:31.661"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:06:35.910" critical="yes" starttime="20180703 13:06:31.656">'-1 != -1' should be true.</status>
+</test>
+<status status="FAIL" endtime="20180703 13:06:35.914" starttime="20180703 13:06:31.027"></status>
+</suite>
+<suite source="D:\Git\BpsTestSh\TestCase\7.txt" id="s1-s2" name="7">
+<test id="s1-s2-t1" name="1_Public_Strike">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>1_Public_Strike</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:06:35.929" level="INFO">${modelname} = 2018_IPS_7-1_Public_Strike</msg>
+<status status="PASS" endtime="20180703 13:06:35.929" starttime="20180703 13:06:35.929"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:06:35.930" level="INFO">Upload bpt: 2018_IPS_7-1_Public_Strike</msg>
+<status status="PASS" endtime="20180703 13:06:35.930" starttime="20180703 13:06:35.930"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:06:36.092" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:06:36.092" starttime="20180703 13:06:35.931"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:36.209" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-1_Public_Strike]</msg>
+<status status="PASS" endtime="20180703 13:06:36.210" starttime="20180703 13:06:36.092"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:06:36.352" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:06:36.353" starttime="20180703 13:06:36.210"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:38.497" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:06:38.497" starttime="20180703 13:06:36.353"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:06:40.977" level="INFO">400
+Some error occurred while starting the test.
+fail: 2018-7-1.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:06:40.977" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:06:40.977" starttime="20180703 13:06:38.497"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:06:40.978" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:06:40.978" starttime="20180703 13:06:40.978"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:06:40.979" starttime="20180703 13:06:35.931"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:06:40.979" critical="yes" starttime="20180703 13:06:35.926">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t2" name="2_Scrambler">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>2_Scrambler</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:06:40.987" level="INFO">${modelname} = 2018_IPS_7-2_Scrambler</msg>
+<status status="PASS" endtime="20180703 13:06:40.987" starttime="20180703 13:06:40.985"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:06:40.988" level="INFO">Upload bpt: 2018_IPS_7-2_Scrambler</msg>
+<status status="PASS" endtime="20180703 13:06:40.988" starttime="20180703 13:06:40.987"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:06:41.497" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:06:41.497" starttime="20180703 13:06:40.993"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:41.600" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-2_Scrambler]</msg>
+<status status="PASS" endtime="20180703 13:06:41.600" starttime="20180703 13:06:41.497"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:06:41.860" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:06:41.861" starttime="20180703 13:06:41.600"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:44.107" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:06:44.107" starttime="20180703 13:06:41.861"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:06:47.905" level="INFO">400
+Some error occurred while starting the test.
+(Slot 1 - 2018-7-2_Scrambler) This test uses too many components. Disable some components.</msg>
+<msg timestamp="20180703 13:06:47.905" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:06:47.905" starttime="20180703 13:06:44.108"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:06:47.906" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:06:47.907" starttime="20180703 13:06:47.906"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:06:47.907" starttime="20180703 13:06:40.992"></status>
+</kw>
+<tags>
+<tag>interface2</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:06:47.907" critical="yes" starttime="20180703 13:06:40.984">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t3" name="4_Strike">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>4_Strike</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:06:47.912" level="INFO">${modelname} = 2018_IPS_7-4_Strike</msg>
+<status status="PASS" endtime="20180703 13:06:47.913" starttime="20180703 13:06:47.912"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:06:47.913" level="INFO">Upload bpt: 2018_IPS_7-4_Strike</msg>
+<status status="PASS" endtime="20180703 13:06:47.914" starttime="20180703 13:06:47.913"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:06:48.103" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:06:48.103" starttime="20180703 13:06:47.915"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:48.333" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-4_Strike]</msg>
+<status status="PASS" endtime="20180703 13:06:48.333" starttime="20180703 13:06:48.103"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:06:48.435" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:06:48.436" starttime="20180703 13:06:48.333"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:50.936" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:06:50.936" starttime="20180703 13:06:48.436"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:06:51.730" level="INFO">400
+Some error occurred while starting the test.
+pass: Overall Bandwidth
+fail: Interface 3 is not assigned on group 1.
+fail: Interface 4 is not assigned on group 1.
+pass: Interface 1 Bandwidth
+pass: Interface 2 Bandwidth
+pass: Network Layout</msg>
+<msg timestamp="20180703 13:06:51.730" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:06:51.730" starttime="20180703 13:06:50.937"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:06:51.731" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:06:51.731" starttime="20180703 13:06:51.730"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:06:51.732" starttime="20180703 13:06:47.914"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:06:51.769" critical="yes" starttime="20180703 13:06:47.911">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t4" name="5_Strike">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>5_Strike</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:06:51.930" level="INFO">${modelname} = 2018_IPS_7-5_Strike</msg>
+<status status="PASS" endtime="20180703 13:06:51.930" starttime="20180703 13:06:51.930"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:06:51.937" level="INFO">Upload bpt: 2018_IPS_7-5_Strike</msg>
+<status status="PASS" endtime="20180703 13:06:51.938" starttime="20180703 13:06:51.932"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:06:52.415" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:06:52.415" starttime="20180703 13:06:51.990"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:52.606" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-5_Strike]</msg>
+<status status="PASS" endtime="20180703 13:06:52.606" starttime="20180703 13:06:52.415"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:06:52.855" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:06:52.855" starttime="20180703 13:06:52.606"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:55.411" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:06:55.411" starttime="20180703 13:06:52.855"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:06:57.583" level="INFO">400
+Some error occurred while starting the test.
+fail: 2018 7-5.attackPlan: '/strikes/exploits/ftp/cve_2018_7573_ftpshell_client_buffer_overflow.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:06:57.583" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:06:57.583" starttime="20180703 13:06:55.412"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:06:57.584" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:06:57.584" starttime="20180703 13:06:57.583"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:06:57.584" starttime="20180703 13:06:51.989"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:06:57.603" critical="yes" starttime="20180703 13:06:51.924">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t5" name="6_Strike">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>6_Strike</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:06:57.627" level="INFO">${modelname} = 2018_IPS_7-6_Strike</msg>
+<status status="PASS" endtime="20180703 13:06:57.627" starttime="20180703 13:06:57.627"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:06:57.628" level="INFO">Upload bpt: 2018_IPS_7-6_Strike</msg>
+<status status="PASS" endtime="20180703 13:06:57.628" starttime="20180703 13:06:57.628"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:06:57.899" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:06:57.899" starttime="20180703 13:06:57.630"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:06:57.962" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-6_Strike]</msg>
+<status status="PASS" endtime="20180703 13:06:57.962" starttime="20180703 13:06:57.900"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:06:58.050" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:06:58.050" starttime="20180703 13:06:57.962"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:00.361" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:00.361" starttime="20180703 13:06:58.050"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:02.954" level="INFO">400
+Some error occurred while starting the test.
+fail: 2018 7-6.attackPlan: '/strikes/exploits/webapp/xss/cve_2018_8831_kodi_create_playlist_persistent_xss.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:07:02.955" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:02.955" starttime="20180703 13:07:00.362"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:02.956" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:02.956" starttime="20180703 13:07:02.955"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:02.956" starttime="20180703 13:06:57.629"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:02.987" critical="yes" starttime="20180703 13:06:57.626">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t6" name="7_Case">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>7_Case</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:03.011" level="INFO">${modelname} = 2018_IPS_7-7_Case</msg>
+<status status="PASS" endtime="20180703 13:07:03.011" starttime="20180703 13:07:03.010"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:03.012" level="INFO">Upload bpt: 2018_IPS_7-7_Case</msg>
+<status status="PASS" endtime="20180703 13:07:03.012" starttime="20180703 13:07:03.011"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:03.418" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:03.419" starttime="20180703 13:07:03.014"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:03.630" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-7_Case]</msg>
+<status status="PASS" endtime="20180703 13:07:03.630" starttime="20180703 13:07:03.419"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:03.938" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:03.938" starttime="20180703 13:07:03.630"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:06.599" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:06.601" starttime="20180703 13:07:03.938"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:08.344" level="INFO">400
+Some error occurred while starting the test.
+fail: evasion-Case.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:07:08.344" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:08.344" starttime="20180703 13:07:06.602"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:08.345" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:08.345" starttime="20180703 13:07:08.344"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:08.345" starttime="20180703 13:07:03.012"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:08.364" critical="yes" starttime="20180703 13:07:03.009">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t7" name="7_Encode">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>7_Encode</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:08.370" level="INFO">${modelname} = 2018_IPS_7-7_Encode</msg>
+<status status="PASS" endtime="20180703 13:07:08.370" starttime="20180703 13:07:08.370"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:08.371" level="INFO">Upload bpt: 2018_IPS_7-7_Encode</msg>
+<status status="PASS" endtime="20180703 13:07:08.371" starttime="20180703 13:07:08.371"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:08.656" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:08.656" starttime="20180703 13:07:08.373"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:08.971" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-7_Encode]</msg>
+<status status="PASS" endtime="20180703 13:07:08.972" starttime="20180703 13:07:08.656"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:09.096" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:09.096" starttime="20180703 13:07:08.972"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:11.473" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:11.473" starttime="20180703 13:07:09.096"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:12.195" level="INFO">400
+Some error occurred while starting the test.
+fail: evasion-encode.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:07:12.195" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:12.195" starttime="20180703 13:07:11.474"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:12.196" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:12.196" starttime="20180703 13:07:12.195"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:12.196" starttime="20180703 13:07:08.372"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:12.202" critical="yes" starttime="20180703 13:07:08.369">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t8" name="7_Fragment">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>7_Fragment</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:12.260" level="INFO">${modelname} = 2018_IPS_7-7_Fragment</msg>
+<status status="PASS" endtime="20180703 13:07:12.260" starttime="20180703 13:07:12.259"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:12.261" level="INFO">Upload bpt: 2018_IPS_7-7_Fragment</msg>
+<status status="PASS" endtime="20180703 13:07:12.261" starttime="20180703 13:07:12.260"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:12.611" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:12.611" starttime="20180703 13:07:12.267"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:12.886" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-7_Fragment]</msg>
+<status status="PASS" endtime="20180703 13:07:12.887" starttime="20180703 13:07:12.612"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:13.217" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:13.217" starttime="20180703 13:07:12.887"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:15.842" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:15.843" starttime="20180703 13:07:13.218"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:19.491" level="INFO">400
+Some error occurred while starting the test.
+fail: evasion-fragment.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:07:19.491" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:19.491" starttime="20180703 13:07:15.843"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:19.493" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:19.493" starttime="20180703 13:07:19.492"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:19.493" starttime="20180703 13:07:12.265"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:19.496" critical="yes" starttime="20180703 13:07:12.258">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t9" name="7_Port_Redirection">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>7_Port_Redirection</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:19.518" level="INFO">${modelname} = 2018_IPS_7-7_Port_Redirection</msg>
+<status status="PASS" endtime="20180703 13:07:19.518" starttime="20180703 13:07:19.518"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:19.519" level="INFO">Upload bpt: 2018_IPS_7-7_Port_Redirection</msg>
+<status status="PASS" endtime="20180703 13:07:19.519" starttime="20180703 13:07:19.519"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:19.694" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:19.694" starttime="20180703 13:07:19.521"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:19.818" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-7_Port_Redirection]</msg>
+<status status="PASS" endtime="20180703 13:07:19.818" starttime="20180703 13:07:19.694"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:19.887" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:19.887" starttime="20180703 13:07:19.819"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:22.253" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:22.253" starttime="20180703 13:07:19.887"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:22.946" level="INFO">400
+Some error occurred while starting the test.
+fail: evasion-port-renew.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:07:22.946" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:22.946" starttime="20180703 13:07:22.254"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:22.947" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:22.947" starttime="20180703 13:07:22.947"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:22.948" starttime="20180703 13:07:19.520"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:22.948" critical="yes" starttime="20180703 13:07:19.517">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t10" name="7_Space">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>7_Space</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:22.953" level="INFO">${modelname} = 2018_IPS_7-7_Space</msg>
+<status status="PASS" endtime="20180703 13:07:22.953" starttime="20180703 13:07:22.953"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:22.954" level="INFO">Upload bpt: 2018_IPS_7-7_Space</msg>
+<status status="PASS" endtime="20180703 13:07:22.954" starttime="20180703 13:07:22.953"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:23.122" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:23.122" starttime="20180703 13:07:22.955"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:23.319" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-7_Space]</msg>
+<status status="PASS" endtime="20180703 13:07:23.319" starttime="20180703 13:07:23.122"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:23.403" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:23.404" starttime="20180703 13:07:23.319"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:25.527" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:25.527" starttime="20180703 13:07:23.404"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:26.089" level="INFO">400
+Some error occurred while starting the test.
+fail: evasion-space.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:07:26.089" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:26.089" starttime="20180703 13:07:25.527"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:26.090" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:26.090" starttime="20180703 13:07:26.089"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:26.090" starttime="20180703 13:07:22.954"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:26.092" critical="yes" starttime="20180703 13:07:22.952">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t11" name="7_TCP_Reflow">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>7_TCP_Reflow</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:26.097" level="INFO">${modelname} = 2018_IPS_7-7_TCP_Reflow</msg>
+<status status="PASS" endtime="20180703 13:07:26.097" starttime="20180703 13:07:26.096"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:26.098" level="INFO">Upload bpt: 2018_IPS_7-7_TCP_Reflow</msg>
+<status status="PASS" endtime="20180703 13:07:26.098" starttime="20180703 13:07:26.098"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:26.558" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:26.558" starttime="20180703 13:07:26.099"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:27.506" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-7_TCP_Reflow]</msg>
+<status status="PASS" endtime="20180703 13:07:27.507" starttime="20180703 13:07:26.559"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:27.648" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:27.649" starttime="20180703 13:07:27.507"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:30.219" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:30.219" starttime="20180703 13:07:27.649"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:31.073" level="INFO">400
+Some error occurred while starting the test.
+fail: evasion-tcp-reflow.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:07:31.073" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:31.074" starttime="20180703 13:07:30.220"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:31.075" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:31.075" starttime="20180703 13:07:31.074"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:31.075" starttime="20180703 13:07:26.099"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:31.076" critical="yes" starttime="20180703 13:07:26.095">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t12" name="7_Variants">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>7_Variants</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:31.082" level="INFO">${modelname} = 2018_IPS_7-7_Variants</msg>
+<status status="PASS" endtime="20180703 13:07:31.082" starttime="20180703 13:07:31.081"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:31.083" level="INFO">Upload bpt: 2018_IPS_7-7_Variants</msg>
+<status status="PASS" endtime="20180703 13:07:31.083" starttime="20180703 13:07:31.082"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:31.381" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:31.381" starttime="20180703 13:07:31.084"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:31.625" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-7_Variants]</msg>
+<status status="PASS" endtime="20180703 13:07:31.625" starttime="20180703 13:07:31.382"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:31.777" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:31.778" starttime="20180703 13:07:31.626"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:34.674" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:34.674" starttime="20180703 13:07:31.778"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:35.627" level="INFO">400
+Some error occurred while starting the test.
+pass: Overall Bandwidth
+fail: Interface 3 is not assigned on group 1.
+fail: Interface 4 is not assigned on group 1.
+pass: Interface 1 Bandwidth
+pass: Interface 2 Bandwidth
+pass: Network Layout</msg>
+<msg timestamp="20180703 13:07:35.627" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:35.627" starttime="20180703 13:07:34.675"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:35.629" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:35.629" starttime="20180703 13:07:35.628"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:35.629" starttime="20180703 13:07:31.083"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:35.632" critical="yes" starttime="20180703 13:07:31.080">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t13" name="8-1">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>8-1</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:35.659" level="INFO">${modelname} = 2018_IPS_7-8-1</msg>
+<status status="PASS" endtime="20180703 13:07:35.659" starttime="20180703 13:07:35.658"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:35.660" level="INFO">Upload bpt: 2018_IPS_7-8-1</msg>
+<status status="PASS" endtime="20180703 13:07:35.660" starttime="20180703 13:07:35.660"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:35.881" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:35.881" starttime="20180703 13:07:35.662"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:36.018" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-8-1]</msg>
+<status status="PASS" endtime="20180703 13:07:36.018" starttime="20180703 13:07:35.881"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:36.353" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:36.353" starttime="20180703 13:07:36.018"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:39.230" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:39.230" starttime="20180703 13:07:36.353"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:39.552" level="INFO">400
+Some error occurred while starting the test.
+pass: Overall Bandwidth
+pass: Interface 1 Bandwidth
+pass: Interface 2 Bandwidth
+pass: Network Layout
+fail: (Slot 1 - DNS Query DDoS) This test uses too many simultaneous sessions. Consider reducing the number of sessions/second or switching the reserved slot mode to BreakingPoint Mode.</msg>
+<msg timestamp="20180703 13:07:39.552" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:39.552" starttime="20180703 13:07:39.230"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:39.553" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:39.553" starttime="20180703 13:07:39.552"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:39.554" starttime="20180703 13:07:35.661"></status>
+</kw>
+<tags>
+<tag>interface2</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:39.584" critical="yes" starttime="20180703 13:07:35.658">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t14" name="8-2">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>8-2</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:39.617" level="INFO">${modelname} = 2018_IPS_7-8-2</msg>
+<status status="PASS" endtime="20180703 13:07:39.617" starttime="20180703 13:07:39.617"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:39.618" level="INFO">Upload bpt: 2018_IPS_7-8-2</msg>
+<status status="PASS" endtime="20180703 13:07:39.618" starttime="20180703 13:07:39.618"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:39.783" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:39.783" starttime="20180703 13:07:39.620"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:39.862" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-8-2]</msg>
+<status status="PASS" endtime="20180703 13:07:39.862" starttime="20180703 13:07:39.783"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:39.940" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:39.941" starttime="20180703 13:07:39.863"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:42.215" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:42.216" starttime="20180703 13:07:39.941"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:42.565" level="INFO">400
+Some error occurred while starting the test.
+warning: Total sending bandwidth capacity exceeded
+warning: Interface 1 is oversubscribed (transmitting 101.0% of 10000 Mbps)
+warning: Interface 2 is oversubscribed (transmitting 101.0% of 10000 Mbps)
+pass: Network Layout
+fail: (Slot 1 - DNS reply DDoS) This test uses too many simultaneous sessions. Consider reducing the number of sessions/second or switching the reserved slot mode to BreakingPoint Mode.</msg>
+<msg timestamp="20180703 13:07:42.566" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:42.566" starttime="20180703 13:07:42.216"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:42.567" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:42.567" starttime="20180703 13:07:42.566"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:42.567" starttime="20180703 13:07:39.619"></status>
+</kw>
+<tags>
+<tag>interface2</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:42.570" critical="yes" starttime="20180703 13:07:39.616">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t15" name="9_Malware_FTP">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>9_Malware_FTP</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:42.575" level="INFO">${modelname} = 2018_IPS_7-9_Malware_FTP</msg>
+<status status="PASS" endtime="20180703 13:07:42.575" starttime="20180703 13:07:42.575"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:42.576" level="INFO">Upload bpt: 2018_IPS_7-9_Malware_FTP</msg>
+<status status="PASS" endtime="20180703 13:07:42.576" starttime="20180703 13:07:42.576"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:42.839" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:42.840" starttime="20180703 13:07:42.577"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:42.959" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-9_Malware_FTP]</msg>
+<status status="PASS" endtime="20180703 13:07:42.959" starttime="20180703 13:07:42.840"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:43.058" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:43.059" starttime="20180703 13:07:42.959"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:45.233" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:45.233" starttime="20180703 13:07:43.059"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:45.271" level="INFO">400
+Some error occurred while starting the test.
+fail: Error initializing component Malware: Can not execute empty strike list: 2018 7-9</msg>
+<msg timestamp="20180703 13:07:45.271" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:45.271" starttime="20180703 13:07:45.233"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:45.272" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:45.272" starttime="20180703 13:07:45.271"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:45.272" starttime="20180703 13:07:42.577"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:45.272" critical="yes" starttime="20180703 13:07:42.574">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t16" name="9_Malware_HTTP">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>9_Malware_HTTP</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:45.277" level="INFO">${modelname} = 2018_IPS_7-9_Malware_HTTP</msg>
+<status status="PASS" endtime="20180703 13:07:45.277" starttime="20180703 13:07:45.277"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:45.278" level="INFO">Upload bpt: 2018_IPS_7-9_Malware_HTTP</msg>
+<status status="PASS" endtime="20180703 13:07:45.278" starttime="20180703 13:07:45.278"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:45.447" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:45.447" starttime="20180703 13:07:45.279"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:45.494" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-9_Malware_HTTP]</msg>
+<status status="PASS" endtime="20180703 13:07:45.495" starttime="20180703 13:07:45.448"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:45.637" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:45.637" starttime="20180703 13:07:45.495"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:47.752" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:47.752" starttime="20180703 13:07:45.637"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:47.794" level="INFO">400
+Some error occurred while starting the test.
+fail: Error initializing component Malware: Can not execute empty strike list: 2018 7-9</msg>
+<msg timestamp="20180703 13:07:47.794" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:47.794" starttime="20180703 13:07:47.752"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:47.795" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:47.795" starttime="20180703 13:07:47.794"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:47.795" starttime="20180703 13:07:45.278"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:47.796" critical="yes" starttime="20180703 13:07:45.276">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s2-t17" name="9_Malware_SMTP">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_7</arg>
+<arg>9_Malware_SMTP</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:47.801" level="INFO">${modelname} = 2018_IPS_7-9_Malware_SMTP</msg>
+<status status="PASS" endtime="20180703 13:07:47.802" starttime="20180703 13:07:47.801"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:47.802" level="INFO">Upload bpt: 2018_IPS_7-9_Malware_SMTP</msg>
+<status status="PASS" endtime="20180703 13:07:47.802" starttime="20180703 13:07:47.802"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:47.947" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:47.947" starttime="20180703 13:07:47.804"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:48.022" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_7-9_Malware_SMTP]</msg>
+<status status="PASS" endtime="20180703 13:07:48.023" starttime="20180703 13:07:47.947"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:48.261" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:48.261" starttime="20180703 13:07:48.023"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:50.473" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:50.473" starttime="20180703 13:07:48.262"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:50.553" level="INFO">400
+Some error occurred while starting the test.
+fail: Error initializing component Malware: Can not execute empty strike list: 2018 7-9</msg>
+<msg timestamp="20180703 13:07:50.553" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:50.554" starttime="20180703 13:07:50.473"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:50.555" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:50.555" starttime="20180703 13:07:50.554"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:50.555" starttime="20180703 13:07:47.803"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:50.561" critical="yes" starttime="20180703 13:07:47.800">'-1 != -1' should be true.</status>
+</test>
+<status status="FAIL" endtime="20180703 13:07:50.568" starttime="20180703 13:06:35.919"></status>
+</suite>
+<suite source="D:\Git\BpsTestSh\TestCase\8.txt" id="s1-s3" name="8">
+<test id="s1-s3-t1" name="1_MisInformation">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_8</arg>
+<arg>1_MisInformation</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:50.605" level="INFO">${modelname} = 2018_IPS_8-1_MisInformation</msg>
+<status status="PASS" endtime="20180703 13:07:50.605" starttime="20180703 13:07:50.605"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:50.606" level="INFO">Upload bpt: 2018_IPS_8-1_MisInformation</msg>
+<status status="PASS" endtime="20180703 13:07:50.606" starttime="20180703 13:07:50.606"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:51.086" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:51.086" starttime="20180703 13:07:50.608"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:51.369" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_8-1_MisInformation]</msg>
+<status status="PASS" endtime="20180703 13:07:51.369" starttime="20180703 13:07:51.086"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:51.597" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:51.597" starttime="20180703 13:07:51.369"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:54.051" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:54.051" starttime="20180703 13:07:51.597"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:07:55.420" level="INFO">400
+Some error occurred while starting the test.
+fail: Strike_List.attackPlan: '/strikes/exploits/misc/cve_2018_1163_quest_netvault_backup_authentication_bypass.xml': Does not reference a valid strike.</msg>
+<msg timestamp="20180703 13:07:55.420" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:07:55.420" starttime="20180703 13:07:54.052"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:07:55.421" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:07:55.422" starttime="20180703 13:07:55.421"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:07:55.422" starttime="20180703 13:07:50.607"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:07:55.442" critical="yes" starttime="20180703 13:07:50.602">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s3-t2" name="2_64Bytes">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_8</arg>
+<arg>2_64Bytes</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:07:55.456" level="INFO">${modelname} = 2018_IPS_8-2_64Bytes</msg>
+<status status="PASS" endtime="20180703 13:07:55.457" starttime="20180703 13:07:55.456"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:07:55.457" level="INFO">Upload bpt: 2018_IPS_8-2_64Bytes</msg>
+<status status="PASS" endtime="20180703 13:07:55.457" starttime="20180703 13:07:55.457"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:07:55.665" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:07:55.665" starttime="20180703 13:07:55.458"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:55.765" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_8-2_64Bytes]</msg>
+<status status="PASS" endtime="20180703 13:07:55.766" starttime="20180703 13:07:55.665"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:07:55.930" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:07:55.930" starttime="20180703 13:07:55.766"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:07:58.610" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:07:58.610" starttime="20180703 13:07:55.930"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:08:00.194" level="INFO">400
+Some error occurred while starting the test.
+pass: Overall Bandwidth
+fail: Interface 3 is not assigned on group 1.
+fail: Interface 4 is not assigned on group 1.
+pass: Interface 1 Bandwidth
+pass: Interface 2 Bandwidth
+pass: Network Layout</msg>
+<msg timestamp="20180703 13:08:00.194" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:08:00.195" starttime="20180703 13:07:58.610"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:08:00.195" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:08:00.196" starttime="20180703 13:08:00.195"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:08:00.196" starttime="20180703 13:07:55.458"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:08:00.233" critical="yes" starttime="20180703 13:07:55.455">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s3-t3" name="2_128Bytes">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_8</arg>
+<arg>2_128Bytes</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:08:00.273" level="INFO">${modelname} = 2018_IPS_8-2_128Bytes</msg>
+<status status="PASS" endtime="20180703 13:08:00.273" starttime="20180703 13:08:00.273"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:08:00.274" level="INFO">Upload bpt: 2018_IPS_8-2_128Bytes</msg>
+<status status="PASS" endtime="20180703 13:08:00.275" starttime="20180703 13:08:00.274"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:08:01.432" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:08:01.432" starttime="20180703 13:08:00.276"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:08:01.746" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_8-2_128Bytes]</msg>
+<status status="PASS" endtime="20180703 13:08:01.746" starttime="20180703 13:08:01.432"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:08:01.904" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:08:01.904" starttime="20180703 13:08:01.746"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:08:04.827" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:08:04.828" starttime="20180703 13:08:01.905"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:08:06.999" level="INFO">400
+Some error occurred while starting the test.
+pass: Overall Bandwidth
+fail: Interface 3 is not assigned on group 1.
+fail: Interface 4 is not assigned on group 1.
+pass: Interface 1 Bandwidth
+pass: Interface 2 Bandwidth
+pass: Network Layout</msg>
+<msg timestamp="20180703 13:08:06.999" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:08:06.999" starttime="20180703 13:08:04.828"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:08:07.000" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:08:07.000" starttime="20180703 13:08:06.999"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:08:07.000" starttime="20180703 13:08:00.275"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:08:07.003" critical="yes" starttime="20180703 13:08:00.272">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s3-t4" name="2_512Bytes">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_8</arg>
+<arg>2_512Bytes</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:08:07.140" level="INFO">${modelname} = 2018_IPS_8-2_512Bytes</msg>
+<status status="PASS" endtime="20180703 13:08:07.140" starttime="20180703 13:08:07.140"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:08:07.179" level="INFO">Upload bpt: 2018_IPS_8-2_512Bytes</msg>
+<status status="PASS" endtime="20180703 13:08:07.179" starttime="20180703 13:08:07.178"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:08:07.958" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:08:07.958" starttime="20180703 13:08:07.250"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:08:08.017" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_8-2_512Bytes]</msg>
+<status status="PASS" endtime="20180703 13:08:08.017" starttime="20180703 13:08:07.959"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:08:08.076" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:08:08.076" starttime="20180703 13:08:08.017"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:08:10.625" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:08:10.625" starttime="20180703 13:08:08.076"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:08:11.754" level="INFO">400
+Some error occurred while starting the test.
+pass: Overall Bandwidth
+fail: Interface 3 is not assigned on group 1.
+fail: Interface 4 is not assigned on group 1.
+pass: Interface 1 Bandwidth
+pass: Interface 2 Bandwidth
+pass: Network Layout</msg>
+<msg timestamp="20180703 13:08:11.755" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:08:11.755" starttime="20180703 13:08:10.625"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:08:11.756" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:08:11.756" starttime="20180703 13:08:11.755"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:08:11.756" starttime="20180703 13:08:07.247"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:08:11.760" critical="yes" starttime="20180703 13:08:07.082">'-1 != -1' should be true.</status>
+</test>
+<test id="s1-s3-t5" name="2_1518Bytes">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>SEPARATOR=-</arg>
+<arg>2018_IPS_8</arg>
+<arg>2_1518Bytes</arg>
+</arguments>
+<assign>
+<var>${modelname}</var>
+</assign>
+<msg timestamp="20180703 13:08:11.765" level="INFO">${modelname} = 2018_IPS_8-2_1518Bytes</msg>
+<status status="PASS" endtime="20180703 13:08:11.765" starttime="20180703 13:08:11.764"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Upload bpt: ${modelname}</arg>
+</arguments>
+<msg timestamp="20180703 13:08:11.766" level="INFO">Upload bpt: 2018_IPS_8-2_1518Bytes</msg>
+<status status="PASS" endtime="20180703 13:08:11.766" starttime="20180703 13:08:11.765"></status>
+</kw>
+<kw name="Simple Run">
+<tags>
+<tag>robot:no-dry-run</tag>
+</tags>
+<arguments>
+<arg>${modelname}</arg>
+<arg>${slot}</arg>
+<arg>${group}</arg>
+<arg>@{portList}</arg>
+</arguments>
+<kw name="Login" library="BPS">
+<msg timestamp="20180703 13:08:12.586" level="INFO">Login successful. Welcome admin</msg>
+<status status="PASS" endtime="20180703 13:08:12.586" starttime="20180703 13:08:11.767"></status>
+</kw>
+<kw name="Upload BPT" library="BPS">
+<arguments>
+<arg>filePath=./bpt/${modelname}.bpt</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:08:12.695" level="INFO">{'force': u'true'}
+For upload template status code 200
+The bpt was uploaded and saved with name: [2018_IPS_8-2_1518Bytes]</msg>
+<status status="PASS" endtime="20180703 13:08:12.695" starttime="20180703 13:08:12.586"></status>
+</kw>
+<kw name="Ports State" library="BPS">
+<msg timestamp="20180703 13:08:13.170" level="INFO">{[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}</msg>
+<status status="PASS" endtime="20180703 13:08:13.171" starttime="20180703 13:08:12.695"></status>
+</kw>
+<kw name="Reserve Ports" library="BPS">
+<arguments>
+<arg>slot=${slot}</arg>
+<arg>portList=@{portList}</arg>
+<arg>group=${group}</arg>
+<arg>force=true</arg>
+</arguments>
+<msg timestamp="20180703 13:08:15.916" level="INFO">Port reservation successful.
+{
+  "result" : "Ports reserved successfully: {[slot=1,port=1]=1:[reserved=admin,group=1,number=2], [slot=1,port=0]=0:[reserved=admin,group=1,number=1]}"
+}</msg>
+<status status="PASS" endtime="20180703 13:08:15.917" starttime="20180703 13:08:13.171"></status>
+</kw>
+<kw name="Run Test" library="BPS">
+<arguments>
+<arg>modelname=${modelname}</arg>
+<arg>group=${group}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20180703 13:08:17.025" level="INFO">400
+Some error occurred while starting the test.
+pass: Overall Bandwidth
+fail: Interface 3 is not assigned on group 1.
+fail: Interface 4 is not assigned on group 1.
+pass: Interface 1 Bandwidth
+pass: Interface 2 Bandwidth
+pass: Network Layout</msg>
+<msg timestamp="20180703 13:08:17.026" level="INFO">${run_id} = -1</msg>
+<status status="PASS" endtime="20180703 13:08:17.026" starttime="20180703 13:08:15.917"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${run_id} != -1</arg>
+</arguments>
+<msg timestamp="20180703 13:08:17.027" level="FAIL">'-1 != -1' should be true.</msg>
+<status status="FAIL" endtime="20180703 13:08:17.027" starttime="20180703 13:08:17.026"></status>
+</kw>
+<status status="FAIL" endtime="20180703 13:08:17.027" starttime="20180703 13:08:11.767"></status>
+</kw>
+<tags>
+<tag>interface4</tag>
+</tags>
+<status status="FAIL" endtime="20180703 13:08:17.057" critical="yes" starttime="20180703 13:08:11.763">'-1 != -1' should be true.</status>
+</test>
+<status status="FAIL" endtime="20180703 13:08:17.074" starttime="20180703 13:07:50.592"></status>
+</suite>
+<status status="FAIL" endtime="20180703 13:08:17.088" starttime="20180703 13:06:30.972"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="23" pass="0">Critical Tests</stat>
+<stat fail="23" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="3" pass="0">interface2</stat>
+<stat fail="20" pass="0">interface4</stat>
+</tag>
+<suite>
+<stat fail="23" id="s1" name="TestCase" pass="0">TestCase</stat>
+<stat fail="1" id="s1-s1" name="13" pass="0">TestCase.13</stat>
+<stat fail="17" id="s1-s2" name="7" pass="0">TestCase.7</stat>
+<stat fail="5" id="s1-s3" name="8" pass="0">TestCase.8</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

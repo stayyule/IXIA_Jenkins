@@ -1,0 +1,6 @@
+*** Settings ***
+Library           simple_traffic.py
+
+*** Test Cases ***
+Simple Run
+    Run    192.168.217.133    platform=windows
