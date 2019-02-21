@@ -2,6 +2,7 @@ import requests
 import json
 import time
 import sys
+import pandas as pd
 
 
 def run(chassisIp, platform="windows"):
@@ -248,11 +249,17 @@ def run(chassisIp, platform="windows"):
 			print(result.content)
 			print(result.json()["columnCaptions"])
 			print(result.json()["pageValues"])
-
-	test_result = False
+	
+	s = pd.Series(result.json()["pageValues"][0][0], index=result.json()["columnCaptions"])
+	print("Traffic statistics:")
+	print(s)
+	if s['Frames Delta'] > 0:
+		test_result = False
+	else:
+		test_result = True
 
 	# delete session when pass leave the session to check when fail.
-	if test_result:
+	if platform == "linux":
 		url = api_server + "/api/v1/sessions/" + session_id + "/operations/stop"
 		result = session.post(url, headers=headers, verify=False)
 
@@ -269,3 +276,5 @@ def run(chassisIp, platform="windows"):
 		url = api_server + "/api/v1/sessions/" + session_id
 		result = session.delete(url, headers=headers, verify=False)
 		print(result)
+
+	return test_result
