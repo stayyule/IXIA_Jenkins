@@ -277,4 +277,4 @@ def run(chassisIp, platform="windows"):
 		result = session.delete(url, headers=headers, verify=False)
 		print(result)
 
-	return test_result
+	return test_result, s
