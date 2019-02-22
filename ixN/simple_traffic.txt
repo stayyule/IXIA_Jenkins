@@ -3,3 +3,4 @@ Library           simple_traffic.py
 
 *** Test Cases ***
 Simple Run
+    ${result}	${stats}	    Run    192.168.217.133    platform=windows
