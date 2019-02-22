@@ -5,9 +5,9 @@ import sys
 import pandas as pd
 
 
-def run(chassisIp, platform="windows"):
+def run(chassisIp, platform="windows", duration=30, csvDir = ""):
 	'''
-	chassisIp: the ip address of chassis
+	chassisIp: the ip address of chassis, 
 	platform: 'windows' | 'linux'
 	'''
 	requests.packages.urllib3.disable_warnings()
@@ -215,7 +215,8 @@ def run(chassisIp, platform="windows"):
 		time.sleep(2)
 
 	# test duration
-	time.sleep(10)
+	print("start traffic for", duration)
+	time.sleep(duration)
 
 	# Stop traffic
 	url = api_server + "/api/v1/sessions/" + session_id + "/ixnetwork/traffic/operations/stop"
@@ -234,6 +235,8 @@ def run(chassisIp, platform="windows"):
 		print(state)
 		time.sleep(2)
 
+	# Fetch stats
+	time.sleep(10)
 	url = api_server + "/api/v1/sessions/" + session_id + "/ixnetwork/statistics/view"
 	result = session.get(url, headers=headers, verify=False)
 	print(result.content)
@@ -251,9 +254,11 @@ def run(chassisIp, platform="windows"):
 			print(result.json()["pageValues"])
 	
 	s = pd.Series(result.json()["pageValues"][0][0], index=result.json()["columnCaptions"])
-	print("Traffic statistics:")
-	print(s)
-	if s['Frames Delta'] > 0:
+	df = pd.DataFrame(s)
+	
+	print("save csv result to ..." + csvDir)
+	df.T.to_csv(csvDir + "/stats.csv")
+	if int(s['Frames Delta']) > 0:
 		test_result = False
 	else:
 		test_result = True

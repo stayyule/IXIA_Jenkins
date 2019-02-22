@@ -1,6 +1,13 @@
 *** Settings ***
 Library           simple_traffic.py
 
+*** Variables ***
+${chassis}        192.168.217.133    # VM Load Module
+
 *** Test Cases ***
 Simple Run
-    ${result}	${stats}	    Run    192.168.217.133    platform=windows
+    Log to Console    Test Start...
+    ${result}    ${stats}    Run    ${chassis}    platform=windows    csvDir=${CURDIR}
+    Log to Console    CSV file save to    ${CURDIR}
+    Log to Console    ${stats}
+    Should Be True    ${result}
