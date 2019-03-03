@@ -36,7 +36,7 @@ class QuickTest:
 		if self.platform == "windows":
 			self.api_server = 'http://192.168.217.128:11009'
 		if self.platform == "linux":
-			self.api_server = 'https://192.168.217.137'
+			self.api_server = 'https://192.168.217.129'
 		
 		# http request session
 		self.session = requests.session()

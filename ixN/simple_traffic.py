@@ -23,7 +23,7 @@ def run(chassisIp, platform="windows", duration=30, csvDir = ""):
 	if platform == "windows":
 		api_server = 'http://192.168.217.128:11009'
 	if platform == "linux":
-		api_server = 'https://192.168.217.137'
+		api_server = 'https://192.168.217.129'
 
 	# http request session
 	session = requests.session()
