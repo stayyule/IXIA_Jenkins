@@ -18,7 +18,7 @@ class QuickTest:
 		print(result.content)
 		url = result.json()["url"]
 		if addServer:
-			url += self.api_server
+			url = self.api_server + url
 		state = result.json()["state"]
 		# -- wait until finish
 		while state == "IN_PROGRESS":
