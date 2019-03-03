@@ -36,6 +36,7 @@ def run(chassisIp, platform="windows", duration=30, csvDir = ""):
 
 	# session management on linux api server
 	if platform == "linux":
+		print('Create Session on Linux api server:', api_server)
 		body = {
 			"username": "admin",
 			"password": "admin"
@@ -54,7 +55,7 @@ def run(chassisIp, platform="windows", duration=30, csvDir = ""):
 		# start session
 		url = api_server + "/api/v1/sessions/" + session_id + "/operations/start"
 		result = session.post(url, headers=headers, verify=False)
-		print(result.content)
+		print(result.json())
 		url = result.json()["url"]
 		state = result.json()["state"]
 		# -- wait until finish
@@ -78,6 +79,7 @@ def run(chassisIp, platform="windows", duration=30, csvDir = ""):
 			time.sleep(2)
 
 	# create vports
+	print('Create Vports...')
 	url = api_server + "/api/v1/sessions/" + session_id + "/ixnetwork/vport"
 	body = [
 		{
