@@ -55,8 +55,8 @@ def run(chassisIp, platform="windows", duration=30, csvDir = ""):
 		# start session
 		url = api_server + "/api/v1/sessions/" + session_id + "/operations/start"
 		result = session.post(url, headers=headers, verify=False)
-		print(result.json())
 		url = result.json()["url"]
+		print("Get progress link:", url)
 		state = result.json()["state"]
 		# -- wait until finish
 		while state == "IN_PROGRESS":
