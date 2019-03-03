@@ -1,0 +1,30 @@
+pipeline {
+	agent any
+	stages {
+		stage('Test') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'ping -c 4 ${Chassis}'
+				sh 'python -m robot --dryrun ./ixN/test_case_8_40.txt'
+				sh 'python -m robot --variable chassis:${Chassis} --include windows ./ixN/test_case_8_40.txt'
+
+			}
+		}
+	}
+	post {
+		always {
+			publishHTML (target: [
+			  allowMissing: false,
+			  alwaysLinkToLastBuild: false,
+			  keepAll: true,
+			  reportDir: '../IxNetwork Json workflow@2',
+			  reportFiles: 'report.html',
+			  reportName: "JSON Workflow Test Report"
+			])
+		}
+	}
+}

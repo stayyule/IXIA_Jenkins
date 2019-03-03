@@ -9,8 +9,8 @@ pipeline {
 			}
 			steps {
 				sh 'ping -c 4 ${Chassis}'
-				sh 'python -m robot --dryrun ./ixN/simple_traffic.txt'
-				sh 'python -m robot --variable chassis:${Chassis} ./ixN/simple_traffic.txt'
+				sh 'python -m robot --dryrun ./ixN/test_case_8_40.txt'
+				sh 'python -m robot --variable chassis:${Chassis} --include linux ./ixN/test_case_8_40.txt'
 
 			}
 		}
@@ -21,9 +21,9 @@ pipeline {
 			  allowMissing: false,
 			  alwaysLinkToLastBuild: false,
 			  keepAll: true,
-			  reportDir: '../IxNetwork simple traffic@2',
+			  reportDir: '../IxNetwork Quick Test@2',
 			  reportFiles: 'report.html',
-			  reportName: "Simple Traffic Test Report"
+			  reportName: "Quick Test Report"
 			])
 		}
 	}

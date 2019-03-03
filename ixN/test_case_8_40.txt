@@ -95,10 +95,11 @@ Json Clone
     ...    router_id=${router_id}    network_address=${network_address}
 
 Quick Test
-    [Tags]    quick test
+    [Tags]    linux
+    ${platform}=    Set Variable    linux
     Log To Console    \n
     Log To Console    connect...
-    Connect
+    Connect    ${platform}
     Log To Console    create traffic and trial 30 sec...
     Create Traffic    ${chassis}    30    ${CURDIR}
     Log To Console    create 2544 and run...
