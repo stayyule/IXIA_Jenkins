@@ -34,11 +34,11 @@ def clone_topology(chassisIp, topology_number=2):
 	}
 	result = requests.request('POST', 'http://' + api_server + ':11009/api/v1/sessions/1/ixnetwork/resourceManager/operations/exportconfig', headers=headers, data=json.dumps(body), verify=False)
 	print(result.content)
-	url = result.json()["url"]
+	url = 'http://' + api_server + ':11009' + result.json()["url"]
 	state = result.json()["state"]
 	# -- wait until finish
 	while state == "IN_PROGRESS":
-		result = session.get(url, headers=headers, verify=False)
+		result = requests.request('GET', url, headers=headers, verify=False)
 		state = result.json()["state"]
 		print(state)
 		time.sleep(2)
