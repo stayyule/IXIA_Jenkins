@@ -182,7 +182,7 @@ class QuickTest:
 		}
 		result = self.session.post(url, headers=self.headers, data=json.dumps(body), verify=False)
 		
-		self.__waitSuccess(result)
+		self.__waitSuccess(result, True)
 		
 
 		# Start traffic
@@ -191,7 +191,7 @@ class QuickTest:
 			"arg1": "/api/v1/sessions/" + self.session_id + "/ixnetwork/traffic"
 		}
 		result = self.session.post(url, headers=self.headers, data=json.dumps(body), verify=False)
-		self.__waitSuccess(result)
+		self.__waitSuccess(result, True)
 		
 
 		# test duration
@@ -204,7 +204,7 @@ class QuickTest:
 			"arg1": "/api/v1/sessions/" + self.session_id + "/ixnetwork/traffic"
 		}
 		result = self.session.post(url, headers=self.headers, data=json.dumps(body), verify=False)
-		self.__waitSuccess(result)
+		self.__waitSuccess(result, True)
 		
 
 		# Fetch stats
