@@ -297,7 +297,7 @@ class QuickTest:
 			progress = result.json()["progress"]
 			test_result = result.json()["result"]
 			test_result_url = result.json()["resultUrl"]
-			print(state, progress)
+			#print(state, progress)
 			time.sleep(10)
 
 		print(test_result, test_result_url)		
