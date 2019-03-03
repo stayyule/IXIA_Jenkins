@@ -14,9 +14,11 @@ class QuickTest:
 		self.headers = ""
 
 		
-	def __waitSuccess(self, result):
+	def __waitSuccess(self, result, addServer=False):
 		print(result.content)
 		url = result.json()["url"]
+		if addServer:
+			url += self.api_server
 		state = result.json()["state"]
 		# -- wait until finish
 		while state == "IN_PROGRESS":
@@ -142,7 +144,7 @@ class QuickTest:
 		url = self.api_server + "/api/v1/sessions/" + self.session_id + "/ixnetwork/globals/licensing"
 		body = {
 			"licensingServers": [
-				"192.168.217.133"
+				chassisIp
 			]
 		}
 		self.session.patch(url, headers=self.headers, data=json.dumps(body), verify=False)
@@ -171,7 +173,7 @@ class QuickTest:
 		}
 		result = self.session.post(url, headers=self.headers, data=json.dumps(body), verify=False)
 
-		self.__waitSuccess(result)
+		self.__waitSuccess(result, True)
 		
 		# Apply traffic
 		url = self.api_server + "/api/v1/sessions/" + self.session_id + "/ixnetwork/traffic/operations/apply"
