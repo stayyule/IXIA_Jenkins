@@ -20,7 +20,7 @@ class QuickTest:
 		state = result.json()["state"]
 		# -- wait until finish
 		while state == "IN_PROGRESS":
-			result = self.session.get(self.api_server + url, headers=self.headers, verify=False)
+			result = self.session.get(url, headers=self.headers, verify=False)
 			state = result.json()["state"]
 			print(state)
 			time.sleep(2)
