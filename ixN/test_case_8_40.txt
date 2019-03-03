@@ -1,0 +1,112 @@
+*** Settings ***
+Library           simple_traffic.py
+Library           Telnet    prompt=#    timeout=1min
+Library           echo_util.py
+Library           load_config.py
+Library           json_clone.py
+Library           QuickTest.py
+
+*** Variables ***
+${chassis}        192.168.217.133    # VM Load Module
+
+*** Test Cases ***
+Simple Traffic
+    [Tags]    traffic
+    Log to Console    Test Start...
+    ${result}    ${stats}    Run    ${chassis}    platform=windows    csvDir=${CURDIR}
+    Log to Console    CSV file save to    ${CURDIR}
+    Log to Console    ${stats}
+    Should Be True    ${result}
+
+c7200 DUT
+    [Tags]    linux
+    ${r1_port}=    Set Variable    5011
+    ${r2_port}=    Set Variable    5012
+    Comment    R1 Configuration
+    Open Connection    192.168.217.136    port=${r1_port}
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    config t
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    interface gigabitEthernet 1/0
+    Execute Command    ip address 1.1.1.1 255.255.255.0
+    Execute Command    no shutdown
+    Execute Command    interface gigabitEthernet 2/0
+    Execute Command    ip address 2.1.1.1 255.255.255.0
+    Execute Command    no shutdown
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    exit
+    Execute Command    exit
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    show ip interface brief
+    Execute Command    \n
+    Execute Command    \n
+    Close Connection
+    Comment    R2 Configuration
+    Open Connection    192.168.217.136    port=${r2_port}
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    config t
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    interface gigabitEthernet 1/0
+    Execute Command    ip address 1.1.1.2 255.255.255.0
+    Execute Command    no shutdown
+    Execute Command    interface gigabitEthernet 2/0
+    Execute Command    ip address 2.1.1.2 255.255.255.0
+    Execute Command    no shutdown
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    exit
+    Execute Command    exit
+    Execute Command    \n
+    Execute Command    \n
+    ${int_brief}=    Execute Command    show ip interface brief
+    Execute Command    \n
+    Execute Command    \n
+    Log    ${int_brief}
+    Close Connection
+    ${link}    ${protocol}    Int Brief    ${int_brief}    ${CURDIR}
+    Should Be Equal As Strings    ${link}    up
+    Should Be Equal As Strings    ${protocol}    up
+
+Load Config
+    [Tags]    windows
+    Load Config    load_config.ixncfg
+
+Json Clone
+    [Tags]    windows
+    ${mac_address}=    Set Variable    18:03:73:c7:6c:a1
+    ${ip_address}=    Set Variable    20.20.20.1
+    ${gateway_address}=    Set Variable    20.20.20.2
+    ${bgp_id}=    Set Variable    192.0.0.2
+    ${dut_ip}=    Set Variable    20.20.20.2
+    ${router_id}=    Set Variable    192.0.0.2
+    ${network_address}=    Set Variable    201.1.0.0
+    Log To Console    load config file
+    Load Config    json.ixncfg
+    Log To Console    clone json object
+    Clone Topology    ${chassis}    topology_number=2
+    Log To Console    config clone object as bgp peer
+    Config Topology    topology_number=2    mac_address=${mac_address}    ip_address=${ip_address}    gateway_address=${gateway_address}    bgp_id=${bgp_id}    dut_ip=${dut_ip}
+    ...    router_id=${router_id}    network_address=${network_address}
+
+Quick Test
+    [Tags]    quick test
+    Log To Console    \n
+    Log To Console    connect...
+    Connect
+    Log To Console    create traffic and trial 30 sec...
+    Create Traffic    ${chassis}    30    ${CURDIR}
+    Log To Console    create 2544 and run...
+    Run Quick Test
+
+*** Keywords ***
+Load Config
+    [Arguments]    ${config_file}
+    ${config_file}    Catenate    SEPARATOR=/    ${CURDIR}    ${config_file}
+    Log To Console    ${config_file}
+    Load    ${config_file}

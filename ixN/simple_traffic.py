@@ -7,7 +7,8 @@ import pandas as pd
 
 def run(chassisIp, platform="windows", duration=30, csvDir = ""):
 	'''
-	chassisIp: the ip address of chassis, 
+	This proc is a sample showing how to build traffic from scratch with restful \r\n
+	chassisIp: the ip address of chassis, \r\n
 	platform: 'windows' | 'linux'
 	'''
 	requests.packages.urllib3.disable_warnings()
@@ -216,7 +217,7 @@ def run(chassisIp, platform="windows", duration=30, csvDir = ""):
 
 	# test duration
 	print("start traffic for", duration)
-	time.sleep(duration)
+	time.sleep(int(duration))
 
 	# Stop traffic
 	url = api_server + "/api/v1/sessions/" + session_id + "/ixnetwork/traffic/operations/stop"
