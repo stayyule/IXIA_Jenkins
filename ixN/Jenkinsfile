@@ -23,17 +23,6 @@ pipeline {
 
 			}
 		}
-		stage('c7200 config') {
-			agent {
-				docker {
-					image 'python/robotframework'
-				}
-			}
-			steps {
-				sh 'python -m robot --variable chassis:${Chassis} --include dut ./ixN/test_case_8_40.txt'
-
-			}
-		}
 		stage('Load config') {
 			agent {
 				docker {
@@ -53,6 +42,17 @@ pipeline {
 			}
 			steps {
 				sh 'python -m robot --variable chassis:${Chassis} --include json ./ixN/test_case_8_40.txt'
+
+			}
+		}
+		stage('c7200 config') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'python -m robot --variable chassis:${Chassis} --include dut ./ixN/test_case_8_40.txt'
 
 			}
 		}
