@@ -1,0 +1,72 @@
+pipeline {
+	agent any
+	stages {
+		stage('Dry run') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'python -m robot --dryrun ./ixN/test_case_8_40.txt'
+				sh 'ping -c 4 ${Chassis}'
+			}
+		}
+		stage('Simple Traffic') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'python -m robot --variable chassis:${Chassis} --include traffic ./ixN/test_case_8_40.txt'
+
+			}
+		}
+		stage('c7200 config') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'python -m robot --variable chassis:${Chassis} --include dut ./ixN/test_case_8_40.txt'
+
+			}
+		}
+		stage('Load config') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'python -m robot --variable chassis:${Chassis} --include loadconfig ./ixN/test_case_8_40.txt'
+
+			}
+		}
+		stage('json') {
+			agent {
+				docker {
+					image 'python/robotframework'
+				}
+			}
+			steps {
+				sh 'python -m robot --variable chassis:${Chassis} --include json ./ixN/test_case_8_40.txt'
+
+			}
+		}
+	}
+	post {
+		always {
+			publishHTML (target: [
+			  allowMissing: false,
+			  alwaysLinkToLastBuild: false,
+			  keepAll: true,
+			  reportDir: '../IxNetwork Pipeline@2',
+			  reportFiles: 'report.html',
+			  reportName: "Test Run Report"
+			])
+		}
+	}
+}

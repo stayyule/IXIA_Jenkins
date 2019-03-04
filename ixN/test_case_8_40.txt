@@ -19,7 +19,7 @@ Simple Traffic
     Should Be True    ${result}
 
 c7200 DUT
-    [Tags]    linux
+    [Tags]    dut
     ${r1_port}=    Set Variable    5011
     ${r2_port}=    Set Variable    5012
     Comment    R1 Configuration
@@ -95,7 +95,7 @@ Json Clone
     ...    router_id=${router_id}    network_address=${network_address}
 
 Quick Test
-    [Tags]    linux
+    [Tags]    quicktest
     ${platform}=    Set Variable    linux
     Log To Console    \n
     Log To Console    connect...
