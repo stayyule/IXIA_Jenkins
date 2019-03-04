@@ -74,11 +74,11 @@ c7200 DUT
     Should Be Equal As Strings    ${protocol}    up
 
 Load Config
-    [Tags]    windows
+    [Tags]    windows    loadconfig
     Load Config    load_config.ixncfg
 
 Json Clone
-    [Tags]    windows
+    [Tags]    windows    json
     ${mac_address}=    Set Variable    18:03:73:c7:6c:a1
     ${ip_address}=    Set Variable    20.20.20.1
     ${gateway_address}=    Set Variable    20.20.20.2
