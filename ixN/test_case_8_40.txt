@@ -12,6 +12,7 @@ ${chassis}        192.168.217.133    # VM Load Module
 *** Test Cases ***
 Simple Traffic
     [Tags]    traffic    windows
+    Log to Console    \n
     Log to Console    Test Start...
     ${result}    ${stats}    Run    ${chassis}    platform=windows    csvDir=${CURDIR}
     Log to Console    CSV file save to    ${CURDIR}
@@ -104,6 +105,19 @@ Quick Test
     Create Traffic    ${chassis}    30    ${CURDIR}
     Log To Console    create 2544 and run...
     Run Quick Test
+
+LGU_DUT
+    ${dut_ip}=    Set Variable    192.168.0.100
+    Open Connection    ${dut_ip}
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    enable
+    Execute Command    \n
+    Execute Command    \n
+    Execute Command    ixiaadmin
+    Execute Command    \n
+    Execute Command    \n
+    ${result}=    Execute Command    show stat brief
 
 *** Keywords ***
 Load Config

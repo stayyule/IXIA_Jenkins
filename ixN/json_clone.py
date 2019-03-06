@@ -211,13 +211,21 @@ def config_topology(topology_number, mac_address, ip_address, gateway_address, b
 	time.sleep(30)
 
 	# Collect stats
-	protocolStatsUrl = ixnetwork_api_server + "/api/v1/sessions/1/ixnetwork/statistics/view/10/page"
-	response = requests.request('GET', protocolStatsUrl, headers=headers, verify=False)
-	columnCaptions = response.json()["columnCaptions"]
-	pageValues = response.json()["pageValues"]
+	url = api_server + "/api/v1/sessions/" + session_id + "/ixnetwork/statistics/view"
+	result = session.get(url, headers=headers, verify=False)
+	print(result.content)
+	for view in result.json():
+		print(view["caption"], view["links"][0]["href"])
+		if view["caption"] == "BGP Peer Per Port":
+			# # get view info
+			result = session.get(api_server + view["links"][0]["href"], headers=headers, verify=False)
+			print(result.content)
+			# # get stats
+			url = api_server + view["links"][0]["href"] + "/page"
+			result = session.get(url, headers=headers, verify=False)
+			columnCaptions = response.json()["columnCaptions"]
+			pageValues = response.json()["pageValues"]
 	
-	print(columnCaptions)
-	print(pageValues)
 
 	df = pd.DataFrame([pageValues[0][0],pageValues[1][0]], columns=columnCaptions)
 	print(df)
