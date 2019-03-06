@@ -208,25 +208,5 @@ def config_topology(topology_number, mac_address, ip_address, gateway_address, b
 	response = requests.request('POST', startProtocolUrl, headers=headers, verify=False)
 	print(response.content)
 
-	time.sleep(30)
 
-	# Collect stats
-	url = api_server + "/api/v1/sessions/" + session_id + "/ixnetwork/statistics/view"
-	result = session.get(url, headers=headers, verify=False)
-	print(result.content)
-	for view in result.json():
-		print(view["caption"], view["links"][0]["href"])
-		if view["caption"] == "BGP Peer Per Port":
-			# # get view info
-			result = session.get(api_server + view["links"][0]["href"], headers=headers, verify=False)
-			print(result.content)
-			# # get stats
-			url = api_server + view["links"][0]["href"] + "/page"
-			result = session.get(url, headers=headers, verify=False)
-			columnCaptions = response.json()["columnCaptions"]
-			pageValues = response.json()["pageValues"]
-	
-
-	df = pd.DataFrame([pageValues[0][0],pageValues[1][0]], columns=columnCaptions)
-	print(df)
 	
